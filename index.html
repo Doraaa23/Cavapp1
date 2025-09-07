@@ -22,7 +22,11 @@
       width: 350px;
       text-align: center;
     }
-    .logo {
+    .logo img {
+      width: 80px;
+      margin-bottom: 15px;
+    }
+    .logo-text {
       font-size: 28px;
       font-weight: bold;
       color: #4facfe;
@@ -40,13 +44,22 @@
       border-radius: 8px;
       font-size: 14px;
     }
+    .row {
+      display: flex;
+      gap: 5px;
+    }
+    .row input {
+      flex: 2;
+    }
+    .row button {
+      flex: 1;
+    }
     button {
-      width: 100%;
       padding: 12px;
       background: #4facfe;
       border: none;
       color: #fff;
-      font-size: 16px;
+      font-size: 14px;
       border-radius: 8px;
       cursor: pointer;
     }
@@ -65,18 +78,42 @@
 </head>
 <body>
   <div class="container">
-    <div class="logo">Cavapp</div>
+    <!-- Logo -->
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Logo Cavapp">
+    </div>
+    <div class="logo-text">Cavapp</div>
+
     <h2>Registrasi</h2>
-    <form>
+    <form onsubmit="return false;">
       <input type="text" placeholder="Nama Lengkap" required>
       <input type="email" placeholder="Email" required>
-      <input type="text" placeholder="No. HP" required>
       <input type="password" placeholder="Kata Sandi" required>
+      
+      <!-- Nomor HP + Kirim Kode -->
+      <div class="row">
+        <input type="text" id="phone" placeholder="No. HP" required>
+        <button type="button" onclick="sendCode()">Kirim Kode</button>
+      </div>
+
+      <input type="text" placeholder="Kode Verifikasi" required>
+
       <button type="submit">Daftar</button>
     </form>
     <div class="link">
       Sudah punya akun? <a href="#">Login</a>
     </div>
   </div>
+
+  <script>
+    function sendCode() {
+      const phone = document.getElementById("phone").value;
+      if(phone){
+        alert("Kode verifikasi telah dikirim ke " + phone);
+      } else {
+        alert("Masukkan nomor HP terlebih dahulu.");
+      }
+    }
+  </script>
 </body>
 </html>
